@@ -8,9 +8,15 @@ if (isset($_POST['submit'])) {
 
     require "dashboard/includes/conn.php";
     //collect data from the form
-
-    $username = $_POST ['username'];
-    $password = $_POST['password'];
+    
+    // Protction to MYSQLI Injection Edit $conn to you DB connection
+    $username =  mysqli_real_escape_string($conn, $_POST ['username']);
+    $username =  mysqli_real_escape_string($conn, $_POST ['password']);
+ 
+ 
+    // is not Safe 
+    //$username = $_POST ['username'];
+    //$password = $_POST['password'];
 
     //check if the fields are empty
 
